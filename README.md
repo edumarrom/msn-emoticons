@@ -91,13 +91,11 @@ All **76** *(+ 5 unused)* original emoticons from **MSN Messenger/Windows Live M
 | ![Xbox](original/unused-xbox.png)                       | Xbox            | `unused-xbox`            | No       | 🎮    |
 | ![Handcuffs](retro/unused-handcuffs.png)                | Handcuffs[^1]   | `unused-handcuffs`       | No       | N/A   |
 
-[^1]: Only available in the `retro` directory.
-
 *All emoticons were extracted from [Escargot](https://escargot.chat/) using [Resource Hacker](https://www.angusj.com/resourcehacker/).*
 
 ## Animated emoticons
 
-Emoticons marked as **"Animated"** include four versions of themselves:
+Emoticons marked as **"Animated"** include the following files:
 - `[filename].png` - APNG animated version
 - `[filename].gif` - GIF animated version
 - `[filename]-static.png` - Static version
@@ -112,37 +110,46 @@ Emoticons marked as **"Animated"** include four versions of themselves:
 > |--------|--------|
 > | <img alt="birthday-cake.png" src="original/birthday-cake.png" height="100"> | <img alt="birthday-cake.gif" src="original/birthday-cake.gif" height="100"> |
 
-
 ## Upscaled version
 
-An 8x version of all static emoticons were made using nearest-neighbor interpolation in order to preserve the pixelated shape. These upsacaled amoticons were exported to optimizewd PNG-24 for small filesize.
+A 8x (152x152) version of all static emoticons was made using nearest-neighbor interpolation to preserve their pixelated look. These upscaled emoticons were exported to optimized PNG-24 files to keep file sizes small.
 
-Animated and static versions were discarded for upscaling process. However, "slice" versions were upscaled as "staging" files in order to be used later.
+Animated and static versions were left out of the upscaling process. However, the "slice" versions were upscaled as staging files for later use.
 
 ## WhatsApp Sticker adaptation
 
-Based on the upscaled version of emoticons, WebP lossless files were made, trying to follow WhatsApp guidelines[^2] [^3] as much as possible, featuring:
+Lossless WebP files were created from the upscaled emoticons, following WhatsApp's sticker guideline[^2] [^3] as closely as possible:
 
 - Stickers must use WebP format.
 - Each sticker has a transparent background.
 - Stickers must be exactly 512x512 pixels.
-- Each sticker must be less than 100 KB (500 KB for animated stickers).
+- Each sticker must under 100 KB (500 KB for animated stickers).
 
+Other recommendations, like a 16-pixel margin between the image and the edge of the 512x512 pixel canvas were also applied, but only on the bottom and right edges.
 
-Other recommendations, like a 16-pixel margin between the sticker image and the edge of the 512x512 pixel canvas were applied.
+I palced the emoticons in the bottom-right of the canvas because these stickers are meant to be used like emojis. This keeps them from looking overñy pixelated at larger sizes, or lost in empty space when centered on the canvas.
 
-For adding an 8-pixel #FFFFFF stroke to the outside of each sticker, I tried several ways to add it but IMHO results weren't good enough to be included.
+One recommendation I didn't follow was adding an 8-pixel white (#)FFFFFF outline around each sticker. I tried several ways of adding it, but IMHO the results weren't good enough to include.
 
-The WebP exportation was made using lossless settings due to filesize increase when applying compression (e.g.: 75% compression over a 2.83 KB PNG emoticon results in a 1.25 KB WebP while lossless compression returns a 796 bytes WebP). I guess this happens due to the pixelated nature of these specific kind of image files.
-
-[^2]: https://faq.whatsapp.com/4148445205479237/?helpref=uf_share
-[^3]: https://faq.whatsapp.com/1056840314992666/?helpref=uf_share
+> [!NOTE]
+>
+> The WebP files have a white pixel at 10% opacity in the top-left and bottom-right corners. This is a trick to force WA Sticker Maker to respect the empty space.
+>
+> The WebP files were exported with lossless settings, since lossy compression actually increased the file size:
+>
+> | Filename    | Original `.png` | Lossy (75%) `.webp` | Lossless `.webp`      |
+> |-------------|-----------------|-------------------------|-----------------------|
+> | `smile.png` | 755 bytes       | 1.53 KB (1570 bytes)    | 724 bytes             |
 
 ## Directories
 
-This repository is divided in the following directories:
+This repository is divided into the following directories:
 
-- `original` - Every emoticon in it's original resolution. *(19x)*
+- `original` - Every emoticon in its original resolution. *(19x19)*
 - `retro` - 8-bit color versions. *(No animated versions.)*
 - `source` - Original files with no modifications.
 - `upscale-8x` - Every emoticon
+
+[^1]: Only available in the `retro` directory.
+[^2]: https://faq.whatsapp.com/4148445205479237/?helpref=uf_share
+[^3]: https://faq.whatsapp.com/1056840314992666/?helpref=uf_share
