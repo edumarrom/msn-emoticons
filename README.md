@@ -1,6 +1,6 @@
 # Original MSN Emoticons
 
-All **76** *(+ 5 unused)* original emoticons from the **Microsoft Live Messenger**.
+All **76** *(+ 5 unused)* original emoticons from **MSN Messenger/Windows Live Messenger**.
 
 |                                                                                                                        | Name                    | Shortcut | Filename                  | Animated | Emoji |
 |------------------------------------------------------------------------------------------------------------------------|-------------------------|----------|---------------------------|----------|-------|
@@ -102,14 +102,41 @@ Emoticons marked as **"Animated"** include four versions of themselves:
 - `[filename].gif` - GIF animated version
 - `[filename]-static.png` - Static version
 - `[filename]-frames.png` - Animation sprite sheet
+- `[filename]-slice-[n].png` - Every animation sprite frame as a standalone file.
 
 > [!NOTE]
-> 
+>
 > It's recommended to use `.png` over `.gif` due to semi-transparent pixels featured in most animated emoticons.
 >
 > | `.png` | `.gif` |
 > |--------|--------|
 > | <img alt="birthday-cake.png" src="original/birthday-cake.png" height="100"> | <img alt="birthday-cake.gif" src="original/birthday-cake.gif" height="100"> |
+
+
+## Upscaled version
+
+An 8x version of all static emoticons were made using nearest-neighbor interpolation in order to preserve the pixelated shape. These upsacaled amoticons were exported to optimizewd PNG-24 for small filesize.
+
+Animated and static versions were discarded for upscaling process. However, "slice" versions were upscaled as "staging" files in order to be used later.
+
+## WhatsApp Sticker adaptation
+
+Based on the upscaled version of emoticons, WebP lossless files were made, trying to follow WhatsApp guidelines[^2] [^3] as much as possible, featuring:
+
+- Stickers must use WebP format.
+- Each sticker has a transparent background.
+- Stickers must be exactly 512x512 pixels.
+- Each sticker must be less than 100 KB (500 KB for animated stickers).
+
+
+Other recommendations, like a 16-pixel margin between the sticker image and the edge of the 512x512 pixel canvas were applied.
+
+For adding an 8-pixel #FFFFFF stroke to the outside of each sticker, I tried several ways to add it but IMHO results weren't good enough to be included.
+
+The WebP exportation was made using lossless settings due to filesize increase when applying compression (e.g.: 75% compression over a 2.83 KB PNG emoticon results in a 1.25 KB WebP while lossless compression returns a 796 bytes WebP). I guess this happens due to the pixelated nature of these specific kind of image files.
+
+[^2]: https://faq.whatsapp.com/4148445205479237/?helpref=uf_share
+[^3]: https://faq.whatsapp.com/1056840314992666/?helpref=uf_share
 
 ## Directories
 
@@ -118,3 +145,4 @@ This repository is divided in the following directories:
 - `original` - Every emoticon in it's original resolution. *(19x)*
 - `retro` - 8-bit color versions. *(No animated versions.)*
 - `source` - Original files with no modifications.
+- `upscale-8x` - Every emoticon
